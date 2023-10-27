@@ -1,6 +1,6 @@
 "use client";
 
-import { Gear, Globe, User } from "@phosphor-icons/react";
+import { Gear, Globe } from "@phosphor-icons/react";
 import { Icon, Tabbar, TabbarLink } from "konsta/react";
 import { useRouter } from "next/navigation";
 
@@ -10,16 +10,10 @@ export function Navigation({ activeTab }: { activeTab: string }) {
   return (
     <Tabbar className="fixed bottom-0 left-0 h-24 pt-6">
       <TabbarLink
-        active={activeTab === "explore"}
-        onClick={() => router.push("/explore")}
+        active={activeTab === "chats"}
+        onClick={() => router.push("/chats")}
         icon={<Icon ios={<Globe size={28} />} material={<Globe size={28} />} />}
-        label={"Explore"}
-      />
-      <TabbarLink
-        active={activeTab === "me"}
-        onClick={() => router.push("/me")}
-        icon={<Icon ios={<User size={28} />} material={<User size={28} />} />}
-        label={"Me"}
+        label={"Chats"}
       />
       <TabbarLink
         active={activeTab === "settings"}

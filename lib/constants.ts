@@ -1,5 +1,5 @@
 export const APP_NAME = "XMTP";
-export const APP_DEFAULT_TITLE = "XMPT";
+export const APP_DEFAULT_TITLE = "XMTP";
 export const APP_DESCRIPTION = "This is a XMTP PWA built for mobile access";
 export const APP_URL = "https://xmtp.pwas.io/";
 

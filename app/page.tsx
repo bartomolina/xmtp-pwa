@@ -1,6 +1,6 @@
 "use client";
 
-import { usePrivy, useWallets } from "@privy-io/react-auth";
+import { usePrivy } from "@privy-io/react-auth";
 import { BlockTitle, List, ListButton, Page } from "konsta/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -11,18 +11,14 @@ import {
   AddToHomeScreeniOS,
   NavbarWithDebug,
 } from "@/ui/layout";
-import { Login } from "@/ui/login";
 
 export default function Home() {
   const router = useRouter();
   const { login, logout, authenticated, ready } = usePrivy();
-  const { wallets } = useWallets();
-
-  const primaryWallet = wallets && wallets[0] ? wallets[0] : undefined;
 
   useEffect(() => {
     if (ready && authenticated) {
-      router.push("/explore");
+      router.push("/chats");
     }
   }, [router, ready, authenticated]);
 
@@ -44,9 +40,6 @@ export default function Home() {
               {authenticated ? "Disconnect" : "Connect"}
             </ListButton>
           </List>
-          {authenticated && primaryWallet && (
-            <Login address={primaryWallet.address} />
-          )}
         </>
       )}
     </Page>

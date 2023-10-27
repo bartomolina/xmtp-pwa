@@ -1,10 +1,16 @@
 "use client";
 
-import { PrivyProvider } from "@privy-io/react-auth";
+import {
+  ConnectedWallet,
+  PrivyProvider,
+  usePrivy,
+  useWallets,
+} from "@privy-io/react-auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useClient, XMTPProvider } from "@xmtp/react-sdk";
 import { App } from "konsta/react";
 import { ThemeProvider } from "next-themes";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { env } from "@/env.mjs";
 import { APP_URL } from "@/lib/constants";
@@ -66,17 +72,49 @@ export function Client({ children }: { children: React.ReactNode }) {
           },
         }}
       >
-        <NotificationProvider>
-          <App theme={theme}>
-            <ThemeProvider attribute="class" enableSystem={false}>
-              <Notification />
-              {children}
-            </ThemeProvider>
-          </App>
-        </NotificationProvider>
+        <XMTPProvider>
+          <NotificationProvider>
+            <App theme={theme}>
+              <ThemeProvider attribute="class" enableSystem={false}>
+                <Notification />
+                <XMTPClient>{children}</XMTPClient>
+              </ThemeProvider>
+            </App>
+          </NotificationProvider>
+        </XMTPProvider>
       </PrivyProvider>
     </QueryClientProvider>
   ) : (
     <></>
   );
+}
+
+function XMTPClient({ children }: { children: React.ReactNode }) {
+  const { initialize } = useClient();
+  const { wallets } = useWallets();
+  const { authenticated, ready, user } = usePrivy();
+
+  const connectedWallet = wallets.find(
+    (wallet) => wallet.address === user?.wallet?.address
+  );
+
+  const handleConnect = useCallback(
+    async (wallet: ConnectedWallet) => {
+      const provider = await wallet.getEthersProvider();
+      await initialize({
+        signer: provider.getSigner(),
+        options: { env: "production" },
+      });
+    },
+    [initialize]
+  );
+
+  useEffect(() => {
+    if (ready && authenticated && connectedWallet) {
+      console.log("test:connecting");
+      handleConnect(connectedWallet);
+    }
+  }, [ready, authenticated, connectedWallet, handleConnect]);
+
+  return <>{children}</>;
 }

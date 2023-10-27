@@ -3,7 +3,7 @@
 import { Page } from "konsta/react";
 
 import { useLoginRedirect } from "@/hooks";
-import { NavbarWithDebug } from "@/ui/layout";
+import { NavbarWithDebug, Navigation } from "@/ui/layout";
 
 export default function Settings() {
   const { isLoggedIn } = useLoginRedirect();
@@ -14,6 +14,7 @@ export default function Settings() {
         <>
           <NavbarWithDebug title="Settings" />
           Settings
+          <Navigation activeTab="settings" />
         </>
       )}
     </Page>
