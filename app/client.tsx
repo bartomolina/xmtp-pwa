@@ -111,7 +111,7 @@ function XMTPClient({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (ready && authenticated && connectedWallet) {
-      console.log("test:connecting");
+      console.log("XMTPClient:connecting");
       handleConnect(connectedWallet);
     }
   }, [ready, authenticated, connectedWallet, handleConnect]);

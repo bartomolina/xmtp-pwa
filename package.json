@@ -17,7 +17,7 @@
     "@xmtp/react-sdk": "^3.0.0",
     "@xmtp/xmtp-js": "^11.2.0",
     "console-feed": "^3.5.0",
-    "konsta": "^3.1.0",
+    "konsta": "^3.1.1",
     "next": "13.5.4",
     "next-themes": "^0.2.1",
     "react": "^18",

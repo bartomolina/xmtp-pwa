@@ -30,8 +30,8 @@ dependencies:
     specifier: ^3.5.0
     version: 3.5.0(jquery@3.7.1)(react-dom@18.2.0)(react@18.2.0)
   konsta:
-    specifier: ^3.1.0
-    version: 3.1.0
+    specifier: ^3.1.1
+    version: 3.1.1
   next:
     specifier: 13.5.4
     version: 13.5.4(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
@@ -5286,8 +5286,8 @@ packages:
     resolution: {integrity: sha512-8t6Q3TclQ4uZynJY9IGr2+SsIGwK9JHcO6ootkHCGA0CrQCRy+VkouYNO2xicET6b9al7QKzpebNow+gkpCL8g==}
     dev: false
 
-  /konsta@3.1.0:
-    resolution: {integrity: sha512-ts/y+dLAb7g2PFm6wWXM3s4Pur84Cxrw1iFT82R5mybnisTk+nTrWV+sR8OIqP0Bkql+7ZqT+SRlOF7/o5DqsA==}
+  /konsta@3.1.1:
+    resolution: {integrity: sha512-xiHK0kyq8WUhvNfxE4mAHrzhK6hZfWonSpQxm4lXFdsFszA5UkB3k5EpmGozBZuQcgiWKnQ7HO50Xr/L8vhGQw==}
     engines: {node: '>= 4.7.0'}
     dev: false
 
