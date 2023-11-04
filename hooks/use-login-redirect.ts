@@ -10,10 +10,12 @@ export function useLoginRedirect() {
 
   useEffect(() => {
     if (ready && !authenticated) {
-      console.log("hook:loginRedirect:redirecting");
-      router.push("/");
-    } else {
-      setIsLoggedIn(true);
+      if (authenticated) {
+        setIsLoggedIn(true);
+      } else {
+        console.log("hook:loginRedirect:redirecting");
+        router.push("/");
+      }
     }
   }, [router, ready, authenticated]);
 

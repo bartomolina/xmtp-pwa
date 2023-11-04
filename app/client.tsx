@@ -103,7 +103,7 @@ function XMTPClient({ children }: { children: React.ReactNode }) {
       const provider = await wallet.getEthersProvider();
       await initialize({
         signer: provider.getSigner(),
-        options: { env: "production" },
+        options: { env: "production", persistConversations: false },
       });
     },
     [initialize]
